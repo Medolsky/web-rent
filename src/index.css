@@ -23,13 +23,21 @@
   --color-navy-100: #dce8f4;
   --color-navy-50: #eef3f9;
 
-  --color-brand-600: #c44d1a;
-  --color-brand-500: #e8622c;
-  --color-brand-400: #f28c38;
-  --color-brand-300: #f5a962;
-  --color-brand-200: #f9cc9a;
-  --color-brand-100: #fde8d2;
-  --color-brand-50: #fef5ec;
+  --color-brand-600: #8e6d13;
+  --color-brand-500: #b08b17;
+  --color-brand-400: #c49f2c;
+  --color-brand-300: #d9b24a;
+  --color-brand-200: #ecd078;
+  --color-brand-100: #f9e4b0;
+  --color-brand-50: #fff9e6;
+
+  --color-orange-600: #8c6d1f;
+  --color-orange-500: #d4af37;
+  --color-orange-400: #ffc121;
+  --color-orange-300: #ffcf45;
+  --color-orange-200: #ffe487;
+  --color-orange-100: #fff1c2;
+  --color-orange-50: #fff8e5;
 }
 
 /* Base resets */
@@ -167,7 +175,7 @@ body {
 
 /* Dotted pattern overlay */
 .dot-pattern {
-  background-image: radial-gradient(rgba(232, 98, 44, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -184,14 +192,14 @@ body {
     -45deg,
     transparent,
     transparent 8px,
-    rgba(232, 98, 44, 0.12) 8px,
-    rgba(232, 98, 44, 0.12) 10px
+    rgba(212, 175, 55, 0.12) 8px,
+    rgba(212, 175, 55, 0.12) 10px
   );
 }
 
-/* Orange gradient line */
+/* Gold gradient line */
 .brand-line {
-  background: linear-gradient(90deg, #e8622c, #f28c38);
+  background: linear-gradient(90deg, #d4af37, #f0d15e);
 }
 
 /* Section divider wave */
