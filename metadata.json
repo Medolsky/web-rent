@@ -1,0 +1,6 @@
+{
+  "name": "Sewa Bus Pariwisata",
+  "description": "Platform booking sewa bus pariwisata profesional dilengkapi dengan website publik, admin panel interaktif, diagram alur web, dan rencana fitur sistem.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

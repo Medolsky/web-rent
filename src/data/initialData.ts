@@ -1,0 +1,394 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { BusArmada, BlogPost, AdBanner, VisitorStat, ContactMessage } from '../types';
+
+export const initialBuses: BusArmada[] = [
+  {
+    id: 'bus-01',
+    nama: 'Scania K410IB Avante H9 Luxury',
+    kategori: 'Luxury',
+    kapasitas: 40,
+    hargaSewa: 4500000,
+    fitur: ['WiFi', 'Sofa Lounge', 'AC', 'Personal TV (AVOD)', 'Karaoke', 'Toilet Memadai', 'Air Suspension'],
+    foto: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=90&w=1200',
+    deskripsi: 'Armada termewah kasta tertinggi (Sultan Class) yang menggabungkan kemewahan sasis Scania Air Suspension dengan karoseri premium Tentrem Avante. Interior dilengkapi kabin khusus sofa lounge di belakang, toilet, smoking room, charger di setiap baris kursi, dan asisten audio visual terbaik.',
+    status: 'Tersedia'
+  },
+  {
+    id: 'bus-02',
+    nama: 'Jetbus 3+ Super Double Decker (SDD) Hino RK',
+    kategori: 'Big Bus',
+    kapasitas: 52,
+    hargaSewa: 3800000,
+    fitur: ['WiFi', 'Double Decker 2 Lantai', 'AC', 'Karaoke System', '10 Android TV', 'Reclining Seat 2-2', 'Dispenser Air'],
+    foto: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&q=90&w=1200',
+    deskripsi: 'Mengusung teknologi double-decker (dua tingkat) yang memberikan sensasi perjalanan yang menyenangkan dengan view pemandangan lebih lapang dari lantai atas. Dilengkapi total 52 kursi ergonomis dengan legrest, bantal, selimut, serta sistem filtrasi udara kabin terkini.',
+    status: 'Tersedia'
+  },
+  {
+    id: 'bus-03',
+    nama: 'Jetbus 3+ Medium HDD Voyager',
+    kategori: 'Medium Bus',
+    kapasitas: 31,
+    hargaSewa: 2400000,
+    fitur: ['AC Super Dingin', 'Karaoke Smart TV', 'USB Port Charger', 'Reclining Seat', 'Bagasi Luas', 'Cool Box'],
+    foto: 'https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?auto=format&fit=crop&q=90&w=1200',
+    deskripsi: 'Bus medium yang gesit dan lincah, sangat direkomendasikan untuk berekreasi bersama keluarga besar menempuh area wisata pegunungan berjalur sempit. Memiliki konfigurasi kursi 2-1 maupun 2-2 yang luas.',
+    status: 'Tersedia'
+  },
+  {
+    id: 'bus-04',
+    nama: 'Toyota Hiace Premio Luxury Captain Seat',
+    kategori: 'Micro Bus / Hiace',
+    kapasitas: 9,
+    hargaSewa: 1700000,
+    fitur: ['Captain Seats Leather', 'Pijatan Kursi Elektrik', 'AC Dual Zone', 'Smart screen TV', 'Karaoke', 'Sound System Venom'],
+    foto: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&q=90&w=1200',
+    deskripsi: 'Microbus premium dengan kenyamanan mobil sedan mewah. Kabin dimodifikasi khusus dengan sentuhan kayu (wood panel), kursi pijat kulit premium yang bisa berputar, ambient lighting romantis, dan peredaman kabin menyeluruh demi privasi maksimal rombongan VIP Anda.',
+    status: 'Disewa'
+  },
+  {
+    id: 'bus-05',
+    nama: 'Subur Jaya Jetbus 3+ SHD "Scania Edition"',
+    kategori: 'Big Bus',
+    kapasitas: 48,
+    hargaSewa: 3400000,
+    fitur: ['WiFi', 'AC', 'DVD Karaoke', 'Dispenser & Kopi', 'Bantal Selimut', 'USB Charger Tap', 'Air Suspension'],
+    foto: 'https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=90&w=1200',
+    deskripsi: 'Super High Deck karoseri Adi Putro yang legendaris, memberikan sudut pandang penumpang bagian depan sangat luas terbebas dari sekat topi kaca luar. Pilihan utama untuk tur instansi atau rombongan studi berwisata antar kota antar provinsi.',
+    status: 'Tersedia'
+  },
+  {
+    id: 'bus-06',
+    nama: 'Isuzu Elf Long Giga Coaster',
+    kategori: 'Micro Bus / Hiace',
+    kapasitas: 19,
+    hargaSewa: 1300000,
+    fitur: ['AC Ducting', 'DVD Audio Player', 'USB Charger', 'Reclining Seat standard', 'Kabin Lega'],
+    foto: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&q=90&w=1200',
+    deskripsi: 'Maksimum kapasitas dengan harga ekonomis. Cocok untuk mengantar rombongan lamaran perkawinan, ziarah, mudik bareng, atau antar-jemput karyawan industri dengan rute menantang yang tidak mungkin dilalui bus besar.',
+    status: 'Perbaikan'
+  }
+];
+
+export const initialBlogs: BlogPost[] = [
+  {
+    id: 'blog-01',
+    judul: 'Tips Cerdas Memilih Jenis Bus Pariwisata yang Tepat untuk Rombongan Anda',
+    ringkasan: 'Agar liburan tetap nyaman dan anggaran terkendali, ketahui cara tepat mencocokkan kapasitas jumlah orang dengan jenis armada bus pariwisata yang ideal.',
+    konten: `Memilih bus pariwisata tidak hanya sekedar menyewa kendaraan besar bermesin diesel. Untuk memastikan perjalanan Anda berjalan lancar tanpa kendala, ada beberapa poin matang yang mutlak harus Anda pertimbangkan.
+
+### 1. Hitung Jumlah Anggota Rombongan Secara Pasti
+Sering kali terjadi kesalahan di mana penyewa meremehkan jumlah rombongan. Jangan memesan bus dengan kapasitas yang pas-pasan. Misalnya rombongan berjumlah 30 orang, hindari menyewa bus medium dengan kapasitas persis 31 orang. Berilah cadangan space minimal 2-4 kursi kosong guna mengantisipasi barang bawaan tambahan atau peserta mendadak.
+
+### 2. Pahami Aksesibilitas Jalur Menuju Destinasi Wisata
+Tidak semua tempat rekreasi bisa dilewati oleh Big Bus Double Decker atau SHD. Contohnya daerah pantai selatan atau kelokan pegunungan di daerah terpencil biasanya membatasi dimensi kendaraan. Jika jalanan meliuk sempit, menyewa Medium Bus atau Hiace Premio adalah pilihan bijak demi keselamatan serta kelincahan manuver.
+
+### 3. Cek Fasilitas yang Benar-Benar Dibutuhkan
+Untuk perjalanan panjang di atas 8 jam (misalnya Jakarta-Bali atau Yogyakarta), fasilitas seperti Toilet, Reclining Seat yang bisa direbahkan maksimal, dan Air Suspension sangatlah esensial guna mencegah kelelahan penat badan. Namun, jika hanya untuk keliling dalam kota, Standard Big Bus non-toilet dengan harga sewa lebih ekonomis sudah sangat memadai.
+
+Konsultasikan kebutuhan perjalanan Anda kepada admin Abditransindo melalui tombol pemesanan WhatsApp yang tersedia di Navigasi Atas dan Footer halaman ini demi mufakat pilihan terbaik!`,
+    tanggal: '2026-05-28',
+    penulis: 'Hendrawan Pratama (Fleet Manager)',
+    foto: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=90&w=1200',
+    status: 'Diterbitkan',
+    views: 145
+  },
+  {
+    id: 'blog-02',
+    judul: 'Rekomendasi Rute Overland Wisata Bandung Paling Hits Menggunakan Medium Bus Premium',
+    ringkasan: 'Jelajahi keindahan Lembang, Ciwidey, dan kuliner perkotaan Bandung dengan kenyamanan tak tertandingi menggunakan Medium Bus Voyager.',
+    konten: `Kota Kembang Bandung masih menjadi magnet wisata akhir pekan terfavorit warga Jakarta dan sekitarnya. Dengan kontur jalanan perbukitan yang menantang dan kerap didera kemacetan, Medium Bus pariwisata adalah jenis moda transportasi terbaik yang paling nyaman. Berikut adalah rencana rute hits terbaik:
+
+### Sesi Pagi: Kesejukan Lembang
+Menjelang matahari terbit, arahkan bus Anda meluncur via Tol Cipularang menuju Lembang. Kunjungi destinasi ramah anak seperti Floating Market atau Orchid Forest Cikole. Nikmati teduhnya jajaran pohon pinus tinggi yang melambai romantis. Medium Bus berkapasitas 31 kursi sangat pas merebahkan badan menyusuri trek menanjak ekstrem Setiabudi tanpa rasa cemas slip mesin.
+
+### Sesi Siang: Wisata Kuliner dan Belanja
+Turun ke area Dago atau Riau untuk memanjakan lidah di kafe-kafe heritage estetik Bandung. Di sini kelebihan Medium Bus kian terasa praktis; parkir lebih mudah didapatkan dibanding bus besar yang kerap dilarang melintas di rute-rute jalan pemukiman pusat factory outlet.
+
+### Sesi Sore-Malam: Sunset Ciwidey atau Pusat Kota
+Jika memiliki waktu lebih, Anda dapat bergeser ke Kawah Putih di Ciwidey. Nikmati hamparan kebun teh berkabut sembari menghirup aroma alam belerang yang eksotis. Perjalanan pulang ditutup dengan beristirahat penuh di atas bus di mana para peserta bisa menyalakan fitur Karaoke System di dalam kabin bus pariwisata kami sembari memicu keseruan kebersamaan!`,
+    tanggal: '2026-05-25',
+    penulis: 'Siti Rahmawati (Tour Planner)',
+    foto: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=90&w=1200',
+    status: 'Diterbitkan',
+    views: 98
+  },
+  {
+    id: 'blog-03',
+    judul: 'Evolusi Suspensi Udara (Air Suspension) pada Bus Pariwisata Modern',
+    ringkasan: 'Bagaimana teknologi peredaman balon udara merevolusi kenyamanan perjalanan darat Anda, menyingkirkan era suspensi per daun yang keras berisik.',
+    konten: `Dulu, mitos berpergian naik bus pariwisata di Indonesia diidentikkan dengan mabuk darat, guncangan keras yang membuat mual, dan bodi kendaraan berisik yang memicu pusing kepala. Semua trauma masa lalu itu berubah total berkat teknologi **Air Suspension** atau suspensi udara balon. 
+
+### Bagaimanakah Cara Kerjanya?
+Berbeda dengan sistem pegas per daun baja tradisional, suspensi udara mengganti pegas logam tersebut dengan tabung balon berbahan karet sintetis kokoh yang diisi tekanan kompresi udara hasil kalkulasi sensor komputer sasis. Kompresor akan menyuplai volume angin secara dinamis menyesuaikan beban muatan penumpang serta kemiringan tikungan jalan.
+
+### Keunggulan Utama untuk Kenyamanan Anda:
+1. **Peredaman Super Halus**: Guncangan saat roda melibas lubang jalanan atau speed limiter (polisi tidur) terserap sempurna hingga nyaris tidak terasa di kabin atas.
+2. **Kabin Sunyi**: Tidak ada gesekan logam per besi, menghasilkan hening suara kabin yang membuat istirahat sepanjang jalan kian pulas layaknya tidur di kamar hotel.
+3. **Mencegah Mabuk Perjalanan**: Karena level kestabilan bodi bus (roll stabilization) terjaga mantap waktu berbelok, organ sensorik keseimbangan di telinga bagian dalam manusia tidak dipaksa bekerja ekstra keras—secara signifikan memangkas rasio gejala mual muntah penumpang.
+
+Kini, demi standar pelayanan premium, armada utama Big Bus Scania dan Double Decker kami telah 100% dipasangi sistem air suspension bersertifikasi internasional!`,
+    tanggal: '2026-05-20',
+    penulis: 'Bambang Widjojo (Senior Engineer)',
+    foto: 'https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=90&w=1200',
+    status: 'Diterbitkan',
+    views: 210
+  },
+  {
+    id: 'blog-04',
+    judul: 'Daftar Kuliner Khas Jalur Pantai Utara (Pantura) Jawa yang Wajib Disinggahi Rombongan Bus Wisata',
+    ringkasan: 'Mudik atau liburan melintasi jalur Pantura? Pastikan rombongan pariwisata Anda berbelanja buah tangan legendaris mulai dari Telur Asin hingga Empal Gentong.',
+    konten: `Melintasi jalur Pantai Utara (Pantura) Jawa bersama rombongan sewa bus pariwisata adalah pengalaman kuliner luar biasa. Jalur legendaris ini menyajikan ragam hidangan khas beraroma rempah tradisional yang ramah di kantong dan memiliki pool parkir bus yang sangat luas. Berikut kuliner wajib Pantura:
+
+### 1. Empal Gentong Haji Apud (Tengah Tani, Cirebon)
+Kuah kuning bersantan kelapa gurih yang dimasak menggunakan gentong tanah liat tradisional berkayu bakar mangga memberikan aroma sangit harum yang khas. Daging sapi empuk bercampur babat lezat siap mengisi energi rombongan pariwisata Anda. Area parkir sangat memadai untuk memuat 4 Big Bus pariwisata sekaligus.
+
+### 2. Telur Asin Asli Cahaya (Brebes)
+Pusat oleh-oleh khas Brebes menyajikan telur bebek kualitas terbaik dengan karakteristik kuning telur berminyak (*masir*) yang gurih asin sedang. Rombongan sewa bus pariwisata dapat berbelanja kemasan keranjang bambu anyaman tradisional yang praktis disusun di dalam lambung bagasi bus.
+
+### 3. Nasi Megono & Sauto Tauco (Pekalongan)
+Cicipi sajian nasi dengan cacahan nangka muda bumbu kelapa parut pedas harum di Pekalongan, atau sauto (soto khas) dengan sentuhan kuah bumbu tauco manis asam gurih yang hangat meresap ke dalam dada sepanjang perjalanan malam di tol Trans Jawa.`,
+    tanggal: '2026-05-15',
+    penulis: 'Rian Hidayat (Senior Guide)',
+    foto: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=90&w=1200',
+    status: 'Diterbitkan',
+    views: 189
+  }
+];
+
+export const initialBanners: AdBanner[] = [
+  {
+    id: 'banner-01',
+    judul: 'Promo Libur Sekolah: Diskon Sewa Bus 15%!',
+    deskripsi: 'Khusus penyewaan unit Big Bus & Luxury selama bulan Juni-Juli 2026. Free souvenir merchandise pariwisata khas untuk seluruh siswa rombongan.',
+    foto: 'https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&q=90&w=1200',
+    link: 'https://wa.me/6281234567890?text=Halo%20Admin%20Abditransindo,%20saya%20tertarik%20dengan%20Promo%20Libur%20Sekolah%20Diskon%2015%',
+    posisi: 'Hero Promo',
+    status: 'Aktif',
+    klikCount: 54
+  },
+  {
+    id: 'banner-02',
+    judul: 'Sewa Hiace Premio Mulai Rp 1.5 Juta per Hari',
+    deskripsi: 'Harga net sewa harian all-in (armada, driver handal, bbm) khusus rute dalam kota Jabodetabek.',
+    foto: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&q=90&w=1200',
+    link: 'https://wa.me/6281234567890?text=Halo%20Admin%20Abditransindo,%20saya%20ingin%20tanya%20sewa%20Hiace%20Premio%20mulai%201.5%20juta',
+    posisi: 'Sidebar Blog',
+    status: 'Aktif',
+    klikCount: 32
+  }
+];
+
+export const initialStats: VisitorStat[] = [
+  { tanggal: '24 Mei', views: 420, pengunjungUtama: 156, bookingDirect: 28, kontakFormSubmit: 11 },
+  { tanggal: '25 Mei', views: 512, pengunjungUtama: 204, bookingDirect: 36, kontakFormSubmit: 14 },
+  { tanggal: '26 Mei', views: 490, pengunjungUtama: 198, bookingDirect: 32, kontakFormSubmit: 9 },
+  { tanggal: '27 Mei', views: 630, pengunjungUtama: 282, bookingDirect: 49, kontakFormSubmit: 20 },
+  { tanggal: '28 Mei', views: 720, pengunjungUtama: 310, bookingDirect: 58, kontakFormSubmit: 25 },
+  { tanggal: '29 Mei', views: 805, pengunjungUtama: 345, bookingDirect: 67, kontakFormSubmit: 30 },
+  { tanggal: '30 Mei', views: 890, pengunjungUtama: 395, bookingDirect: 84, kontakFormSubmit: 36 },
+];
+
+export const initialMessages: ContactMessage[] = [
+  {
+    id: 'msg-01',
+    nama: 'Rizky Sanjaya',
+    email: 'rizky.sanjaya@corp.id',
+    telepon: '081298765432',
+    subjek: 'Penyewaan Big Bus 3 Unit untuk Gathering Perusahaan ke Anyer',
+    pesan: 'Halo Admin, saya rencana menyewa 3 unit Big Bus pariwisata tipe HDD untuk acara gathering tahunan kantor tanggal 12-14 Juli 2026. Penjemputan di Jakarta Selatan, tujuan Pantai Anyer Banten. Apakah unit masih tersedia dan berapa harga paket nett-nya?',
+    tanggal: '2026-05-30 08:15',
+    dibaca: false
+  },
+  {
+    id: 'msg-02',
+    nama: 'Sania Amalia',
+    email: 'sania_amalia@gmail.com',
+    telepon: '085732145678',
+    subjek: 'Tanya Ketersediaan Hiace Luxury untuk Lamaran',
+    pesan: 'Untuk sewa Toyota Hiace Captain Seat tanggal 7 Juni 2026 ke daerah Puncak Bogor, apakah sudah include tol dan makan supir ya? Mohon rincian lengkapnya via email atau WA.',
+    tanggal: '2026-05-29 14:30',
+    dibaca: true
+  }
+];
+
+// DATA STRUKTUR UNTUK WEB FLOW DIAGRAM DAN RENCANA FITUR (SYSTEM ARCHITECTURE DELIVERABLES)
+export interface FlowNode {
+  id: string;
+  label: string;
+  tipe: 'visitor' | 'admin' | 'decision' | 'system';
+  deskripsi: string;
+  x: number;
+  y: number;
+}
+
+export interface FlowConnection {
+  from: string;
+  to: string;
+  label?: string;
+}
+
+export const webFlowData = {
+  nodes: [
+    // Jalur Publik Website
+    { id: 'p-start', label: 'Pengunjung Masuk', tipe: 'visitor', deskripsi: 'Pengunjung mengunjungi landing page / homepage melalui hasil pencarian Google, iklan, sosial media atau link referral.', x: 100, y: 150 },
+    { id: 'p-home', label: 'Homepage Publik', tipe: 'visitor', deskripsi: 'Landing page utama yang menampilkan USP, slider promo aktif, katalog bus unggulan harian, rangkuman blog, form kontak instan, dan FAQ.', x: 280, y: 150 },
+    { id: 'p-dec-explore', label: 'Keputusan Telusuri?', tipe: 'decision', deskripsi: 'Pengunjung memilih tindakan selanjutnya: mengeksplorasi armada bus pariwisata, membaca keunggulan di Tentang Kami, melihat edukasi di artikel Blog, atau mengirimkan pertanyaan.', x: 480, y: 150 },
+    
+    { id: 'p-kategori', label: 'Halaman Kategori Bus', tipe: 'visitor', deskripsi: 'Katalog interaktif menampilkan seluruh armada bus dengan filter instan berdasarkan kategori armada (Luxury, Big, Medium, Micro/Hiace) dan kapasitas penumpang.', x: 480, y: 40 },
+    { id: 'p-about', label: 'Halaman Tentang Kami', tipe: 'visitor', deskripsi: 'Pemaparan nilai perusahaan, legalitas resmi, keunggulan layanan, serta testimoni kepuasan pelanggan.', x: 680, y: 100 },
+    { id: 'p-blog', label: 'Halaman Blog & Tips', tipe: 'visitor', deskripsi: 'Daftar artikel edukatif dan pemeliharaan bus yang dinamis dikelola dari admin panel, berfungsi membangun kepercayaan dan SEO Google.', x: 680, y: 180 },
+    { id: 'p-kontak', label: 'Halaman Hubungi Kami', tipe: 'visitor', deskripsi: 'Halaman integrasi form kontak umum (mengirim pesan ke database admin) dan informasi alamat fisik kantor operasional.', x: 480, y: 260 },
+    
+    { id: 'p-dec-booking', label: 'Ingin Pesan Bus?', tipe: 'decision', deskripsi: 'Pengunjung ingin menyewa bus. Tombol pesan sewa bus diatur secara eksklusif HANYA ada di Header Navigation (tetap) dan Footer bagian terbawah halaman untuk menjaga estetika.', x: 880, y: 150 },
+    { id: 'p-wa-direct', label: 'Beralih ke WhatsApp', tipe: 'system', deskripsi: 'Redirect langsung ke tautan API WhatsApp otomatis menggunakan string pra-pesan terstruktur menyebutkan kategori bus dan rute perjalanan.', x: 1080, y: 150 },
+    
+    // Jalur Admin Panel
+    { id: 'a-login', label: 'Akses Admin Panel', tipe: 'admin', deskripsi: 'Akses panel administrasi yang aman guna mengawasi seluruh data, iklan promo, dan memodifikasi konten publik.', x: 100, y: 420 },
+    { id: 'a-dashboard', label: 'Dashboard Utama', tipe: 'admin', deskripsi: 'Menu monitoring statistik kunjungan riil-time harian (views, unique visitors, klik booking WA, form submissions) yang bertenaga chart grafis.', x: 280, y: 420 },
+    { id: 'a-dec-menu', label: 'Pilih Navigasi CRUD', tipe: 'decision', deskripsi: 'Admin memilih fitur operasional yang ingin dimodifikasi guna pembaruan website publik seketika.', x: 480, y: 420 },
+    
+    { id: 'a-crud-bus', label: 'CRUD Armada Bus', tipe: 'admin', deskripsi: 'Menambah, mengubah info/status sewa, mengunggah foto, dan menghapus bus dari list situs publik.', x: 680, y: 340 },
+    { id: 'a-crud-blog', label: 'CRUD Blog Artikel', tipe: 'admin', deskripsi: 'Kontrol manajemen konten draf vs publish, mengunggah banner artikel dengan dynamic markdown.', x: 680, y: 425 },
+    { id: 'a-crud-banner', label: 'Manajemen Iklan Banner', tipe: 'admin', deskripsi: 'Mengunggah banner komersial luar atau diskon promo, dan menetapkan posisi tayang sela di website.', x: 680, y: 510 },
+    { id: 'a-inbox', label: 'Kotak Masuk Kontak', tipe: 'admin', deskripsi: 'Membaca formulir kontak masuk yang diisi oleh calon penyewa di website publik guna follow-up penawaran.', x: 480, y: 560 }
+  ] as FlowNode[],
+  
+  connections: [
+    { from: 'p-start', to: 'p-home' },
+    { from: 'p-home', to: 'p-dec-explore' },
+    
+    { from: 'p-dec-explore', to: 'p-kategori', label: 'Lihat Armada' },
+    { from: 'p-dec-explore', to: 'p-about', label: 'Profil Kami' },
+    { from: 'p-dec-explore', to: 'p-blog', label: 'Cari Edukasi' },
+    { from: 'p-dec-explore', to: 'p-kontak', label: 'Isi Form Kontak' },
+    
+    { from: 'p-kategori', to: 'p-dec-booking' },
+    { from: 'p-about', to: 'p-dec-booking' },
+    { from: 'p-blog', to: 'p-dec-booking' },
+    { from: 'p-kontak', to: 'p-dec-booking' },
+    
+    { from: 'p-dec-booking', to: 'p-wa-direct', label: 'Klik Pesan WA' },
+    
+    // Admin connections
+    { from: 'a-login', to: 'a-dashboard' },
+    { from: 'a-dashboard', to: 'a-dec-menu' },
+    
+    { from: 'a-dec-menu', to: 'a-crud-bus', label: 'Manage Bus' },
+    { from: 'a-dec-menu', to: 'a-crud-blog', label: 'Manage Blog' },
+    { from: 'a-dec-menu', to: 'a-crud-banner', label: 'Manage Iklan' },
+    { from: 'a-dec-menu', to: 'a-inbox', label: 'Buka Inbox' },
+    
+    // System feeds
+    { from: 'a-crud-bus', to: 'p-kategori', label: 'Auto Update' },
+    { from: 'a-crud-blog', to: 'p-blog', label: 'Auto Update' },
+    { from: 'p-kontak', to: 'a-inbox', label: 'Form Submit' }
+  ] as FlowConnection[]
+};
+
+export interface FeaturePlanItem {
+  id: string;
+  fitur: string;
+  kategori: 'Website Publik' | 'Admin Panel' | 'Sistem / Database';
+  deskripsi: string;
+  prioritas: 'Must-Have' | 'Should-Have' | 'Nice-to-Have';
+  dependencies: string;
+  pelaku: string;
+}
+
+export const featuresPlanData: FeaturePlanItem[] = [
+  {
+    id: 'f-01',
+    fitur: 'Header & Footer Fixed Booking',
+    kategori: 'Website Publik',
+    deskripsi: 'Penempatan tombol booking/pesan hanya di header tetap (navbar scroll-sticky) dan footer terbawah. Mencegah clutter diskon di listing bus individual serta mempercantik visual (terinspirasi abditransindo.com).',
+    prioritas: 'Must-Have',
+    dependencies: 'None',
+    pelaku: 'Pengunjung Rombongan'
+  },
+  {
+    id: 'f-02',
+    fitur: 'Katalog Bus Dinamis Berfilter',
+    kategori: 'Website Publik',
+    deskripsi: 'Menampilkan bus dari database dengan card ber-border melengkung indah (rounded-3xl) dan transisi smooth. Pengguna bisa memfilter berdasarkan tipe/kapasitas secara instan.',
+    prioritas: 'Must-Have',
+    dependencies: 'Database Fleet Armada',
+    pelaku: 'Pengunjung / Calon Penyewa'
+  },
+  {
+    id: 'f-03',
+    fitur: 'Direct WhatsApp Booking Integration',
+    kategori: 'Website Publik',
+    deskripsi: 'Mengalihkan penayangan nomor HP individual ke interaksi langsung WhatsApp dengan template pesan pre-filled cerdas sesuai minat klik pengunjung.',
+    prioritas: 'Must-Have',
+    dependencies: 'WhatsApp API Link-generator',
+    pelaku: 'Pengunjung & Admin Sales'
+  },
+  {
+    id: 'f-04',
+    fitur: 'Dynamic Blog Section',
+    kategori: 'Website Publik',
+    deskripsi: 'Membaca artikel SEO yang ditulis oleh admin secara dinamis lengkap dengan pembacaan views, cover gambar berskala, dan styling markdown.',
+    prioritas: 'Should-Have',
+    dependencies: 'CRUD Konten Blog',
+    pelaku: 'Pembaca / Pengunjung'
+  },
+  {
+    id: 'f-05',
+    fitur: 'Form Kontak Umum Terintegrasi',
+    kategori: 'Website Publik',
+    deskripsi: 'Mengakomodasi formulir masukan calon pelanggan berkebutuhan sewa rombongan korporat besar untuk disimpan ke inbox database admin.',
+    prioritas: 'Must-Have',
+    dependencies: 'Inbox Service / LocalStorage',
+    pelaku: 'Pengunjung & Admin Hubungan'
+  },
+  {
+    id: 'f-06',
+    fitur: 'CRUD Manajemen Armada Bus',
+    kategori: 'Admin Panel',
+    deskripsi: 'Form penambahan armada baru, pengunggahan foto ilustratif, pengaturan kapasitas, pelabelan AC/Non-AC/Toilet, penyesuaian harga sewa, dan modul set status (Tersedia, Disewa, Perbaikan).',
+    prioritas: 'Must-Have',
+    dependencies: 'Data State Global',
+    pelaku: 'Administrator'
+  },
+  {
+    id: 'f-07',
+    fitur: 'CRUD Manajemen Artikel Blog',
+    kategori: 'Admin Panel',
+    deskripsi: 'Editor kaya teks (Rich Metadata / Rich text Markdown support) buat mempublikasikan draf penulisan tips panduan wisata serta pengunggahan foto cover.',
+    prioritas: 'Should-Have',
+    dependencies: 'Data State Global',
+    pelaku: 'Content Administrator'
+  },
+  {
+    id: 'f-08',
+    fitur: 'Manajemen Banner Iklan & Promo',
+    kategori: 'Admin Panel',
+    deskripsi: 'Mengatur penayangan gambar promo di landing page utama guna memaksimalkan conversion rate kunjungan hari raya sekolah.',
+    prioritas: 'Nice-to-Have',
+    dependencies: 'None',
+    pelaku: 'Marketing Administrator'
+  },
+  {
+    id: 'f-09',
+    fitur: 'Dashboard Analytics Interaktif',
+    kategori: 'Admin Panel',
+    deskripsi: 'Grafik pengunjung web harian, total klik chat WhatsApp, and visitor trends yang disajikan dengan Recharts bergaya modern.',
+    prioritas: 'Should-Have',
+    dependencies: 'Recharts library',
+    pelaku: 'System Owner / Marketing'
+  },
+  {
+    id: 'f-10',
+    fitur: 'Manajemen Kotak Masuk (Inbox) Pelanggan',
+    kategori: 'Admin Panel',
+    deskripsi: 'Menelusuri pesan formulir tanya-jawab sewa bus masuk, membaca isinya, menandai status telah dibaca/diproses, dan follow-up langsung.',
+    prioritas: 'Must-Have',
+    dependencies: 'Form Kontak Publik',
+    pelaku: 'Customer Service Admin'
+  }
+];
