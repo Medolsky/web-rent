@@ -6,7 +6,7 @@
 export interface BusArmada {
   id: string;
   nama: string;
-  kategori: 'Luxury' | 'Big Bus' | 'Medium Bus' | 'Micro Bus / Hiace';
+  kategori: 'City Car' | 'Mini Bus' | 'Medium Bus' | 'Big Bus';
   kapasitas: number;
   hargaSewa: number; // per hari dalam Rupiah
   fitur: string[]; // e.g. ["AC", "Karaoke", "Toilet", "Wifi", "Reclining Seat", "USB Charger"]
@@ -57,4 +57,18 @@ export interface ContactMessage {
   dibaca: boolean;
 }
 
+export interface VehiclePhoto {
+  id: string;
+  foto: string;
+  created_at?: string;
+}
+
+export interface HeroBackground {
+  id: string;
+  foto: string;
+  isActive: boolean;
+  created_at?: string;
+}
+
 export type AppViewMode = 'WORKSPACE' | 'PUBLIC_SITE' | 'ADMIN_PANEL';
+

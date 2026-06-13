@@ -11,33 +11,33 @@
   --font-heading: "Plus Jakarta Sans", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --color-navy-950: #07101e;
-  --color-navy-900: #0c1a30;
-  --color-navy-800: #122240;
-  --color-navy-700: #1a3056;
-  --color-navy-600: #24406e;
-  --color-navy-500: #2e5288;
-  --color-navy-400: #4a7ab5;
-  --color-navy-300: #7ba3d0;
-  --color-navy-200: #b0cbe5;
-  --color-navy-100: #dce8f4;
-  --color-navy-50: #eef3f9;
+  --color-navy-950: #082a1c;
+  --color-navy-900: #0d3524;
+  --color-navy-800: #14442f;
+  --color-navy-700: #1c5a3e;
+  --color-navy-600: #26704e;
+  --color-navy-500: #328a61;
+  --color-navy-400: #4eaa7e;
+  --color-navy-300: #7cc5a0;
+  --color-navy-200: #b0dfc6;
+  --color-navy-100: #dcf0e5;
+  --color-navy-50: #eef7f2;
 
-  --color-brand-600: #8e6d13;
-  --color-brand-500: #b08b17;
-  --color-brand-400: #c49f2c;
-  --color-brand-300: #d9b24a;
-  --color-brand-200: #ecd078;
-  --color-brand-100: #f9e4b0;
-  --color-brand-50: #fff9e6;
+  --color-brand-600: #96762e;
+  --color-brand-500: #ba9445;
+  --color-brand-400: #c8a557;
+  --color-brand-300: #d4b876;
+  --color-brand-200: #e2ce9f;
+  --color-brand-100: #f0e4c9;
+  --color-brand-50: #f9f4e8;
 
-  --color-orange-600: #8c6d1f;
-  --color-orange-500: #d4af37;
-  --color-orange-400: #ffc121;
-  --color-orange-300: #ffcf45;
-  --color-orange-200: #ffe487;
-  --color-orange-100: #fff1c2;
-  --color-orange-50: #fff8e5;
+  --color-orange-600: #96762e;
+  --color-orange-500: #ba9445;
+  --color-orange-400: #c8a557;
+  --color-orange-300: #d4b876;
+  --color-orange-200: #e2ce9f;
+  --color-orange-100: #f0e4c9;
+  --color-orange-50: #f9f4e8;
 }
 
 /* Base resets */
@@ -48,6 +48,35 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   GLOBAL IMAGE ANTI-PIXELATION & QUALITY
+   ============================================ */
+
+/* All images: smooth interpolation to prevent pixelation when upscaled */
+img {
+  image-rendering: auto;                /* Default smooth (bilinear) interpolation */
+  -ms-interpolation-mode: bicubic;      /* IE smooth scaling */
+  -webkit-backface-visibility: hidden;  /* Prevent blurry transforms */
+  backface-visibility: hidden;
+  transform: translateZ(0);             /* Force GPU compositing for sharper rendering */
+}
+
+/* Photo-style images: maximum smoothness even when stretched */
+img.img-photo,
+.img-photo img {
+  image-rendering: auto;
+  image-rendering: smooth;              /* Modern browsers: smooth interpolation */
+  image-rendering: high-quality;        /* Safari: high quality rendering */
+  -webkit-image-rendering: high-quality;
+}
+
+/* Logo/icon images that need crisp pixel edges */
+img.img-crisp,
+.img-crisp img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 /* Custom transitions and animations */
@@ -175,7 +204,7 @@ body {
 
 /* Dotted pattern overlay */
 .dot-pattern {
-  background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(203, 178, 94, 0.08) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -192,15 +221,15 @@ body {
     -45deg,
     transparent,
     transparent 8px,
-    rgba(212, 175, 55, 0.12) 8px,
-    rgba(212, 175, 55, 0.12) 10px
+    rgba(186, 148, 69, 0.12) 8px,
+    rgba(186, 148, 69, 0.12) 10px
   );
 }
 
 /* Gold gradient line */
 .brand-line {
   position: relative;
-  background: linear-gradient(90deg, #d4af37, #f0d15e);
+  background: linear-gradient(90deg, #ba9445, #c8a557);
   overflow: hidden;
 }
 
@@ -223,7 +252,7 @@ body {
   background-image:
     linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 46%),
     linear-gradient(90deg, var(--color-brand-500), var(--color-brand-400));
-  background-blend-mode: screen;
+  background-blend-mode: normal;
 }
 
 /* Section divider wave */
@@ -277,4 +306,173 @@ body {
 
 .btn-shine:hover::after {
   animation: shineSweep 1.8s infinite ease-in-out;
+}
+
+/* ============================================
+   JACKAL HOLIDAYS-STYLE NAVBAR DROPDOWNS
+   ============================================ */
+
+/* Navbar dropdown container */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  border: none;
+  background: transparent;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.nav-dropdown-trigger:hover,
+.nav-dropdown-trigger.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.nav-dropdown-trigger .chevron-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.6;
+}
+
+.nav-dropdown:hover .nav-dropdown-trigger .chevron-icon,
+.nav-dropdown-trigger.active .chevron-icon {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Dropdown menu panel */
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 220px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.18), 0 4px 12px -2px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px) scale(0.97);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 999;
+  padding: 6px;
+  pointer-events: none;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Dropdown items */
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.nav-dropdown-item:hover {
+  background: linear-gradient(135deg, #f0e4c9 0%, #f9f4e8 100%);
+  color: #082a1c;
+}
+
+.nav-dropdown-item .item-icon {
+  width: 16px;
+  height: 16px;
+  color: #ba9445;
+  flex-shrink: 0;
+}
+
+/* Simple nav link (no dropdown) */
+.nav-link-simple {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  border: none;
+  background: transparent;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  border-radius: 8px;
+}
+
+.nav-link-simple:hover,
+.nav-link-simple.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Login / CTA button in navbar */
+.nav-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #082a1c;
+  background: linear-gradient(135deg, #ba9445 0%, #c8a557 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  box-shadow: 0 2px 8px rgba(186, 148, 69, 0.25);
+}
+
+.nav-cta-btn:hover {
+  background: linear-gradient(135deg, #c8a557 0%, #d4b876 100%);
+  box-shadow: 0 4px 16px rgba(186, 148, 69, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Dropdown divider */
+.nav-dropdown-divider {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 4px 8px;
+}
+
+/* Invisible hover bridge (prevents dropdown from closing when moving mouse) */
+.nav-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: transparent;
 }

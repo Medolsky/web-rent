@@ -1,0 +1,11 @@
+Options -Indexes
+# Blokir eksekusi PHP di folder uploads
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|phps|pht|phar)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+# Izinkan akses langsung ke file gambar
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>

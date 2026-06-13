@@ -3,74 +3,112 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BusArmada, BlogPost, AdBanner, VisitorStat, ContactMessage } from '../types';
+import { BusArmada, BlogPost, AdBanner, VisitorStat, ContactMessage, VehiclePhoto, HeroBackground } from '../types';
+
+// Import local bus fleet photos uploaded by user
+import bus31Seat from '../../assets/image/armada/bus-31-seat.png';
+import bus35Seat from '../../assets/image/armada/bus-35-seat.png';
+import bus50Seat from '../../assets/image/armada/bus-50-seat.jpg';
+import bus59Seat from '../../assets/image/armada/bus-59-seat.png';
+import elfLong from '../../assets/image/armada/elf-long.png';
+import hiaceLuxury from '../../assets/image/armada/hiace-luxury.png';
+import hiaceStandart from '../../assets/image/armada/hiace-standart.png';
+
+// Import local destination photos uploaded by user
+import baliImg from '../../assets/image/destinasi/bali.jpg';
+import borobudurImg from '../../assets/image/destinasi/borobudur.jpg';
+import gunungImg from '../../assets/image/destinasi/gunung.jpg';
+import prambananImg from '../../assets/image/destinasi/prambanan.jpg';
+import rajaAmpatImg from '../../assets/image/destinasi/raja-ampat.jpg';
 
 export const initialBuses: BusArmada[] = [
   {
-    id: 'bus-01',
-    nama: 'Scania K410IB Avante H9 Luxury',
-    kategori: 'Luxury',
-    kapasitas: 40,
-    hargaSewa: 4500000,
-    fitur: ['WiFi', 'Sofa Lounge', 'AC', 'Personal TV (AVOD)', 'Karaoke', 'Toilet Memadai', 'Air Suspension'],
-    foto: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=90&w=1200',
-    deskripsi: 'Armada termewah kasta tertinggi (Sultan Class) yang menggabungkan kemewahan sasis Scania Air Suspension dengan karoseri premium Tentrem Avante. Interior dilengkapi kabin khusus sofa lounge di belakang, toilet, smoking room, charger di setiap baris kursi, dan asisten audio visual terbaik.',
+    id: 'bus-09',
+    nama: 'Toyota Innova Zenix MPV Premium',
+    kategori: 'City Car',
+    kapasitas: 7,
+    hargaSewa: 900000,
+    fitur: ['AC Dual Zone', 'Charger Port', 'Audio System', 'Reclining Seat', 'Bagasi Luas', 'Captain Seat'],
+    foto: hiaceStandart,
+    deskripsi: 'Toyota Innova Zenix MPV Premium menawarkan kenyamanan berkendara kelas atas dengan performa mesin hybrid yang senyap dan hemat bahan bakar. Sangat cocok untuk perjalanan dinas perkotaan maupun wisata keluarga kecil.',
     status: 'Tersedia'
   },
   {
     id: 'bus-02',
     nama: 'Jetbus 3+ Super Double Decker (SDD) Hino RK',
     kategori: 'Big Bus',
-    kapasitas: 52,
+    kapasitas: 59,
     hargaSewa: 3800000,
     fitur: ['WiFi', 'Double Decker 2 Lantai', 'AC', 'Karaoke System', '10 Android TV', 'Reclining Seat 2-2', 'Dispenser Air'],
-    foto: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&q=90&w=1200',
-    deskripsi: 'Mengusung teknologi double-decker (dua tingkat) yang memberikan sensasi perjalanan yang menyenangkan dengan view pemandangan lebih lapang dari lantai atas. Dilengkapi total 52 kursi ergonomis dengan legrest, bantal, selimut, serta sistem filtrasi udara kabin terkini.',
+    foto: bus59Seat,
+    deskripsi: 'Mengusung teknologi double-decker (dua tingkat) yang memberikan sensasi perjalanan yang menyenangkan dengan view pemandangan lebih lapang dari lantai atas. Dilengkapi total 59 kursi ergonomis dengan legrest, bantal, selimut, serta sistem filtrasi udara kabin terkini.',
     status: 'Tersedia'
   },
   {
     id: 'bus-03',
-    nama: 'Jetbus 3+ Medium HDD Voyager',
+    nama: 'Jetbus 3+ Medium HDD Voyager (31 Seat)',
     kategori: 'Medium Bus',
     kapasitas: 31,
     hargaSewa: 2400000,
     fitur: ['AC Super Dingin', 'Karaoke Smart TV', 'USB Port Charger', 'Reclining Seat', 'Bagasi Luas', 'Cool Box'],
-    foto: 'https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?auto=format&fit=crop&q=90&w=1200',
+    foto: bus31Seat,
     deskripsi: 'Bus medium yang gesit dan lincah, sangat direkomendasikan untuk berekreasi bersama keluarga besar menempuh area wisata pegunungan berjalur sempit. Memiliki konfigurasi kursi 2-1 maupun 2-2 yang luas.',
     status: 'Tersedia'
   },
   {
     id: 'bus-04',
     nama: 'Toyota Hiace Premio Luxury Captain Seat',
-    kategori: 'Micro Bus / Hiace',
+    kategori: 'Mini Bus',
     kapasitas: 9,
     hargaSewa: 1700000,
     fitur: ['Captain Seats Leather', 'Pijatan Kursi Elektrik', 'AC Dual Zone', 'Smart screen TV', 'Karaoke', 'Sound System Venom'],
-    foto: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&q=90&w=1200',
+    foto: hiaceLuxury,
     deskripsi: 'Microbus premium dengan kenyamanan mobil sedan mewah. Kabin dimodifikasi khusus dengan sentuhan kayu (wood panel), kursi pijat kulit premium yang bisa berputar, ambient lighting romantis, dan peredaman kabin menyeluruh demi privasi maksimal rombongan VIP Anda.',
-    status: 'Disewa'
+    status: 'Tersedia'
   },
   {
     id: 'bus-05',
     nama: 'Subur Jaya Jetbus 3+ SHD "Scania Edition"',
     kategori: 'Big Bus',
-    kapasitas: 48,
+    kapasitas: 50,
     hargaSewa: 3400000,
     fitur: ['WiFi', 'AC', 'DVD Karaoke', 'Dispenser & Kopi', 'Bantal Selimut', 'USB Charger Tap', 'Air Suspension'],
-    foto: 'https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=90&w=1200',
+    foto: bus50Seat,
     deskripsi: 'Super High Deck karoseri Adi Putro yang legendaris, memberikan sudut pandang penumpang bagian depan sangat luas terbebas dari sekat topi kaca luar. Pilihan utama untuk tur instansi atau rombongan studi berwisata antar kota antar provinsi.',
     status: 'Tersedia'
   },
   {
     id: 'bus-06',
     nama: 'Isuzu Elf Long Giga Coaster',
-    kategori: 'Micro Bus / Hiace',
+    kategori: 'Mini Bus',
     kapasitas: 19,
     hargaSewa: 1300000,
     fitur: ['AC Ducting', 'DVD Audio Player', 'USB Charger', 'Reclining Seat standard', 'Kabin Lega'],
-    foto: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&q=90&w=1200',
+    foto: elfLong,
     deskripsi: 'Maksimum kapasitas dengan harga ekonomis. Cocok untuk mengantar rombongan lamaran perkawinan, ziarah, mudik bareng, atau antar-jemput karyawan industri dengan rute menantang yang tidak mungkin dilalui bus besar.',
-    status: 'Perbaikan'
+    status: 'Tersedia'
+  },
+  {
+    id: 'bus-07',
+    nama: 'Jetbus 3+ Medium HDD Voyager (35 Seat)',
+    kategori: 'Medium Bus',
+    kapasitas: 35,
+    hargaSewa: 2600000,
+    fitur: ['AC Dual Zone', 'Karaoke Smart TV', 'USB Port Charger', 'Reclining Seat', 'Bagasi Ekstra Luas', 'Cool Box'],
+    foto: bus35Seat,
+    deskripsi: 'Pilihan kapasitas medium yang lebih besar, menawarkan 35 kursi ergonomis yang nyaman bagi rombongan studi banding, ziarah, maupun pariwisata keluarga menengah.',
+    status: 'Tersedia'
+  },
+  {
+    id: 'bus-08',
+    nama: 'Toyota Hiace Commuter Standar',
+    kategori: 'Mini Bus',
+    kapasitas: 15,
+    hargaSewa: 1400000,
+    fitur: ['AC Dingin Merata', 'DVD Player', 'USB Charger', 'Nyaman Standard', 'Hemat BBM'],
+    foto: hiaceStandart,
+    deskripsi: 'Model standar Hiace Commuter yang melegenda, andalan utama perjalanan keluarga, shuttle antar jemput instansi, dan wisata rombongan kecil dengan kenyamanan yang dapat diandalkan.',
+    status: 'Tersedia'
   }
 ];
 
@@ -90,10 +128,10 @@ Tidak semua tempat rekreasi bisa dilewati oleh Big Bus Double Decker atau SHD. C
 ### 3. Cek Fasilitas yang Benar-Benar Dibutuhkan
 Untuk perjalanan panjang di atas 8 jam (misalnya Jakarta-Bali atau Yogyakarta), fasilitas seperti Toilet, Reclining Seat yang bisa direbahkan maksimal, dan Air Suspension sangatlah esensial guna mencegah kelelahan penat badan. Namun, jika hanya untuk keliling dalam kota, Standard Big Bus non-toilet dengan harga sewa lebih ekonomis sudah sangat memadai.
 
-Konsultasikan kebutuhan perjalanan Anda kepada admin Abditransindo melalui tombol pemesanan WhatsApp yang tersedia di Navigasi Atas dan Footer halaman ini demi mufakat pilihan terbaik!`,
+Konsultasikan kebutuhan perjalanan Anda kepada admin ABBATA WISATA melalui tombol pemesanan WhatsApp yang tersedia di Navigasi Atas dan Footer halaman ini demi mufakat pilihan terbaik!`,
     tanggal: '2026-05-28',
     penulis: 'Hendrawan Pratama (Fleet Manager)',
-    foto: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=90&w=1200',
+    foto: borobudurImg,
     status: 'Diterbitkan',
     views: 145
   },
@@ -113,7 +151,7 @@ Turun ke area Dago atau Riau untuk memanjakan lidah di kafe-kafe heritage esteti
 Jika memiliki waktu lebih, Anda dapat bergeser ke Kawah Putih di Ciwidey. Nikmati hamparan kebun teh berkabut sembari menghirup aroma alam belerang yang eksotis. Perjalanan pulang ditutup dengan beristirahat penuh di atas bus di mana para peserta bisa menyalakan fitur Karaoke System di dalam kabin bus pariwisata kami sembari memicu keseruan kebersamaan!`,
     tanggal: '2026-05-25',
     penulis: 'Siti Rahmawati (Tour Planner)',
-    foto: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=90&w=1200',
+    foto: gunungImg,
     status: 'Diterbitkan',
     views: 98
   },
@@ -134,7 +172,7 @@ Berbeda dengan sistem pegas per daun baja tradisional, suspensi udara mengganti 
 Kini, demi standar pelayanan premium, armada utama Big Bus Scania dan Double Decker kami telah 100% dipasangi sistem air suspension bersertifikasi internasional!`,
     tanggal: '2026-05-20',
     penulis: 'Bambang Widjojo (Senior Engineer)',
-    foto: 'https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=90&w=1200',
+    foto: prambananImg,
     status: 'Diterbitkan',
     views: 210
   },
@@ -154,9 +192,63 @@ Pusat oleh-oleh khas Brebes menyajikan telur bebek kualitas terbaik dengan karak
 Cicipi sajian nasi dengan cacahan nangka muda bumbu kelapa parut pedas harum di Pekalongan, atau sauto (soto khas) dengan sentuhan kuah bumbu tauco manis asam gurih yang hangat meresap ke dalam dada sepanjang perjalanan malam di tol Trans Jawa.`,
     tanggal: '2026-05-15',
     penulis: 'Rian Hidayat (Senior Guide)',
-    foto: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=90&w=1200',
+    foto: baliImg,
     status: 'Diterbitkan',
     views: 189
+  },
+  {
+    id: 'blog-05',
+    judul: 'Mengenal Sasis Premium Bus Pariwisata: Perbandingan Scania K410IB vs Mercedes-Benz OH 1626',
+    ringkasan: 'Edukasi sasis bus premium terpopuler di Indonesia. Pahami perbedaan performa mesin, sistem suspensi balon udara, dan fitur keselamatan keduanya.',
+    konten: `Bagi pencinta bus pariwisata maupun penyelenggara tur yang ingin menyewa armada terbaik, memahami sasis landasan bus adalah pengetahuan berharga. Dua nama sasis premium paling merajai jalan tol Trans Jawa saat ini adalah **Scania K410IB** buatan Swedia dan **Mercedes-Benz OH 1626** rakitan Jerman. Berikut kupas tuntas komparasinya:
+
+### 1. Dapur Pacu & Tenaga Mesin
+- **Scania K410IB**: Menggendong mesin monster 13.000 cc 6-silinder bertenaga **410 Horsepower (HP)**. Menawarkan torsi raksasa yang sangat melimpah untuk melibas tanjakan pegunungan terjal dengan kondisi AC menyala dingin penuh tanpa hambatan berarti.
+- **Mercedes-Benz OH 1626**: Dibekali mesin legendaris OM 906 LA 6.300 cc bertenaga **260 Horsepower (HP)**. Sangat efisien dalam konsumsi solar bbm, sangat tangguh, dan memiliki suku cadang yang melimpah di seluruh pelosok Indonesia.
+
+### 2. Sistem Transmisi & Kehalusan Berkendara
+- **Scania K410IB**: Mengadopsi transmisi otomatis pintar **Scania Opticruise 12-percepatan**. Komputer sasis akan memindahkan gigi dengan kehalusan luar biasa (tanpa hentakan kopling), memberikan kenyamanan kabin sunyi bagaikan naik kereta cepat.
+- **Mercedes-Benz OH 1626**: Menggunakan transmisi manual 6-percepatan yang sangat responsif, memberikan kendali penuh pada pengemudi andalan kami untuk mengatur laju kendaraan di jalanan berkelok basah.
+
+### 3. Sistem Kestabilan & Suspensi Udara
+Kedua sasis ini telah mengadopsi teknologi **Air Suspension** bawaan pabrik (bukan modifikasi karoseri lokal). Namun, Scania K410IB dilengkapi fitur *electronic leveling control* yang otomatis menyeimbangkan ketinggian bodi bus saat melibas tikungan tajam, meminimalisir gejala limbung/mabuk perjalanan rombongan Anda.
+
+Konsultasikan kebutuhan sasis sewaan pariwisata Anda bersama sales representatif ABBATA WISATA untuk mendapatkan rekomendasi unit Sultan Class terbaik!`,
+    tanggal: '2026-06-01',
+    penulis: 'Bambang Widjojo (Senior Engineer)',
+    foto: rajaAmpatImg,
+    status: 'Diterbitkan',
+    views: 312
+  },
+  {
+    id: 'blog-06',
+    judul: 'Panduan Lengkap Wisata Ziarah Wali Songo yang Aman, Nyaman, dan Khidmat',
+    ringkasan: 'Tips esensial bagi panitia majelis taklim dalam merencanakan perjalanan spiritual ziarah kubur Wali Songo lintas provinsi secara efisien.',
+    konten: `Wisata religi ziarah kubur para Wali Songo di tanah Jawa merupakan rutinitas spiritual tahunan yang sangat dinantikan oleh majelis taklim, pondok pesantren, dan keluarga besar. Mengingat durasi perjalanan yang sangat panjang (bisa berkisar antara 5 hingga 9 hari overland), perencanaan yang matang mutlak diperlukan. Berikut panduan lengkapnya:
+
+### 1. Pemilihan Armada Bus dengan Toilet & Suspensi Balon
+Menempuh perjalanan ribuan kilometer lintas provinsi dari Jawa Barat, Jawa Tengah, hingga Jawa Timur sangat menguras stamina fisik rombongan, terutama bagi jamaah lanjut usia (lansia). Sangat direkomendasikan menyewa tipe **Big Bus SHD/HDD yang dilengkapi fasilitas toilet kabin** (khusus buang air kecil saat bus berjalan di jalan tol) serta suspensi balon udara agar pinggang jamaah tidak pegal.
+
+### 2. Menyusun Rute Logis Berdasarkan Geografis
+Mulailah ziarah secara berurutan agar rute tidak tumpang tindih. Sebagai contoh rute Barat ke Timur:
+1. Sunan Gunung Jati (Cirebon)
+2. Sunan Kalijaga (Demak)
+3. Sunan Kudus & Sunan Muria (Kudus)
+4. Sunan Bonang (Tuban)
+5. Sunan Drajat (Lamongan)
+6. Sunan Gresik & Sunan Giri (Gresik)
+7. Sunan Ampel (Surabaya)
+8. Sunan Gunung Jati (kembali pulang atau diteruskan ke makam KH Abdurrahman Wahid/Gus Dur di Jombang).
+
+### 3. Istirahat Cukup & Kepatuhan Protokol Supir
+Pastikan supir bus mendapatkan waktu istirahat yang layak minimal 8 jam setelah mengemudikan bus pariwisata. Di ABBATA WISATA, kami menerapkan kebijakan ketat **dua supir resmi (driver utama & driver cadangan)** untuk setiap sewa perjalanan overland ziarah Wali Songo demi menjamin keamanan maksimum jamaah ummat.
+
+Atur jadwal ziarah berkah Anda sekarang bersama ABBATA WISATA dan nikmati penawaran harga kemitraan paket ziarah berkah yang kompetitif!`,
+    tanggal: '2026-06-02',
+    penulis: 'Ustadz H. Ahmad Ridwan (Tour Advisor)',
+    foto: borobudurImg,
+    status: 'Diterbitkan',
+    views: 420
   }
 ];
 
@@ -164,9 +256,9 @@ export const initialBanners: AdBanner[] = [
   {
     id: 'banner-01',
     judul: 'Promo Libur Sekolah: Diskon Sewa Bus 15%!',
-    deskripsi: 'Khusus penyewaan unit Big Bus & Luxury selama bulan Juni-Juli 2026. Free souvenir merchandise pariwisata khas untuk seluruh siswa rombongan.',
+    deskripsi: 'Khusus penyewaan unit Big Bus & Medium Bus selama bulan Juni-Juli 2026. Free souvenir merchandise pariwisata khas untuk seluruh siswa rombongan.',
     foto: 'https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&q=90&w=1200',
-    link: 'https://wa.me/6281234567890?text=Halo%20Admin%20Abditransindo,%20saya%20tertarik%20dengan%20Promo%20Libur%20Sekolah%20Diskon%2015%',
+    link: 'https://wa.me/628211588758?text=Halo%20Admin%20ABBATA%20WISATA,%20saya%20tertarik%20dengan%20Promo%20Libur%20Sekolah%20Diskon%2015%',
     posisi: 'Hero Promo',
     status: 'Aktif',
     klikCount: 54
@@ -175,8 +267,8 @@ export const initialBanners: AdBanner[] = [
     id: 'banner-02',
     judul: 'Sewa Hiace Premio Mulai Rp 1.5 Juta per Hari',
     deskripsi: 'Harga net sewa harian all-in (armada, driver handal, bbm) khusus rute dalam kota Jabodetabek.',
-    foto: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&q=90&w=1200',
-    link: 'https://wa.me/6281234567890?text=Halo%20Admin%20Abditransindo,%20saya%20ingin%20tanya%20sewa%20Hiace%20Premio%20mulai%201.5%20juta',
+    foto: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=90&w=1200',
+    link: 'https://wa.me/628211588758?text=Halo%20Admin%20ABBATA%20WISATA,%20saya%20ingin%20tanya%20sewa%20Hiace%20Premio%20mulai%201.5%20juta',
     posisi: 'Sidebar Blog',
     status: 'Aktif',
     klikCount: 32
@@ -209,7 +301,7 @@ export const initialMessages: ContactMessage[] = [
     nama: 'Sania Amalia',
     email: 'sania_amalia@gmail.com',
     telepon: '085732145678',
-    subjek: 'Tanya Ketersediaan Hiace Luxury untuk Lamaran',
+    subjek: 'Tanya Ketersediaan Hiace Premio untuk Lamaran',
     pesan: 'Untuk sewa Toyota Hiace Captain Seat tanggal 7 Juni 2026 ke daerah Puncak Bogor, apakah sudah include tol dan makan supir ya? Mohon rincian lengkapnya via email atau WA.',
     tanggal: '2026-05-29 14:30',
     dibaca: true
@@ -239,7 +331,7 @@ export const webFlowData = {
     { id: 'p-home', label: 'Homepage Publik', tipe: 'visitor', deskripsi: 'Landing page utama yang menampilkan USP, slider promo aktif, katalog bus unggulan harian, rangkuman blog, form kontak instan, dan FAQ.', x: 280, y: 150 },
     { id: 'p-dec-explore', label: 'Keputusan Telusuri?', tipe: 'decision', deskripsi: 'Pengunjung memilih tindakan selanjutnya: mengeksplorasi armada bus pariwisata, membaca keunggulan di Tentang Kami, melihat edukasi di artikel Blog, atau mengirimkan pertanyaan.', x: 480, y: 150 },
     
-    { id: 'p-kategori', label: 'Halaman Kategori Bus', tipe: 'visitor', deskripsi: 'Katalog interaktif menampilkan seluruh armada bus dengan filter instan berdasarkan kategori armada (Luxury, Big, Medium, Micro/Hiace) dan kapasitas penumpang.', x: 480, y: 40 },
+    { id: 'p-kategori', label: 'Halaman Kategori Bus', tipe: 'visitor', deskripsi: 'Katalog interaktif menampilkan seluruh armada bus dengan filter instan berdasarkan kategori armada (City Car, Mini Bus, Medium Bus, Big Bus) dan kapasitas penumpang.', x: 480, y: 40 },
     { id: 'p-about', label: 'Halaman Tentang Kami', tipe: 'visitor', deskripsi: 'Pemaparan nilai perusahaan, legalitas resmi, keunggulan layanan, serta testimoni kepuasan pelanggan.', x: 680, y: 100 },
     { id: 'p-blog', label: 'Halaman Blog & Tips', tipe: 'visitor', deskripsi: 'Daftar artikel edukatif dan pemeliharaan bus yang dinamis dikelola dari admin panel, berfungsi membangun kepercayaan dan SEO Google.', x: 680, y: 180 },
     { id: 'p-kontak', label: 'Halaman Hubungi Kami', tipe: 'visitor', deskripsi: 'Halaman integrasi form kontak umum (mengirim pesan ke database admin) dan informasi alamat fisik kantor operasional.', x: 480, y: 260 },
@@ -305,7 +397,7 @@ export const featuresPlanData: FeaturePlanItem[] = [
     id: 'f-01',
     fitur: 'Header & Footer Fixed Booking',
     kategori: 'Website Publik',
-    deskripsi: 'Penempatan tombol booking/pesan hanya di header tetap (navbar scroll-sticky) dan footer terbawah. Mencegah clutter diskon di listing bus individual serta mempercantik visual (terinspirasi abditransindo.com).',
+    deskripsi: 'Penempatan tombol booking/pesan hanya di header tetap (navbar scroll-sticky) dan footer terbawah. Mencegah clutter diskon di listing bus individual serta mempercantik visual (terinspirasi abbata.com).',
     prioritas: 'Must-Have',
     dependencies: 'None',
     pelaku: 'Pengunjung Rombongan'
@@ -392,3 +484,22 @@ export const featuresPlanData: FeaturePlanItem[] = [
     pelaku: 'Customer Service Admin'
   }
 ];
+
+export const initialPhotos: VehiclePhoto[] = [
+  { id: 'photo-1', foto: bus31Seat },
+  { id: 'photo-2', foto: bus35Seat },
+  { id: 'photo-3', foto: bus50Seat },
+  { id: 'photo-4', foto: bus59Seat },
+  { id: 'photo-5', foto: elfLong },
+  { id: 'photo-6', foto: hiaceLuxury },
+  { id: 'photo-7', foto: hiaceStandart }
+];
+
+export const initialHeroBackgrounds: HeroBackground[] = [
+  { id: 'bg-1', foto: baliImg, isActive: true },
+  { id: 'bg-2', foto: borobudurImg, isActive: true },
+  { id: 'bg-3', foto: gunungImg, isActive: true },
+  { id: 'bg-4', foto: prambananImg, isActive: true },
+  { id: 'bg-5', foto: rajaAmpatImg, isActive: true }
+];
+

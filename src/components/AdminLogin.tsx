@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Lock, Eye, EyeOff, ArrowLeft, Compass, ShieldAlert, Loader2 } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, ArrowLeft, ShieldAlert, Loader2 } from 'lucide-react';
+import abbataLogo from '../../assets/image/profile/logo-abbata.png';
 
 interface AdminLoginProps {
   onLoginSuccess: () => void;
@@ -31,7 +32,7 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
 
     // Simulate database lookup/loading for a very realistic experience
     setTimeout(() => {
-      if (checkEmail === 'admin@abditransindo.com' && checkPassword === 'admin123') {
+      if (checkEmail === 'info.abditransindo@gmail.com' && checkPassword === 'admin123') {
         setIsLoading(false);
         onLoginSuccess();
       } else {
@@ -54,14 +55,16 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-50 flex flex-col justify-center items-center px-4 py-12 select-none overflow-hidden font-sans">
-      {/* 1. PASTEL SOFT MESH GRADIENT BACKGROUNDS */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808004_1px,transparent_1px),linear-gradient(to_bottom,#80808004_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0"></div>
-      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-violet-600/10 rounded-full blur-[120px] pointer-events-none z-0 animate-float"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none z-0 animate-float-delayed"></div>
-      <div className="absolute top-[30%] right-[10%] w-[30%] h-[30%] bg-sky-500/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+    <div className="relative min-h-screen bg-navy-950 flex flex-col justify-center items-center px-4 py-12 select-none overflow-hidden font-sans">
+      {/* 1. MESH GRID & GLOW EFFECT */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none z-0"></div>
+      
+      {/* Glowing gold and dark yellow blobs */}
+      <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-brand-500/10 rounded-full blur-[140px] pointer-events-none z-0 animate-pulse" style={{ animationDuration: '8s' }}></div>
+      <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-brand-500/10 rounded-full blur-[140px] pointer-events-none z-0 animate-pulse" style={{ animationDuration: '10s' }}></div>
+      <div className="absolute top-[30%] right-[10%] w-[35%] h-[35%] bg-brand-500/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
-      {/* Inject custom CSS shaking animation to avoid config worries */}
+      {/* Inject custom CSS animations */}
       <style>{`
         @keyframes shake {
           0%, 100% { transform: translateX(0); }
@@ -71,36 +74,57 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
         .animate-shake {
           animation: shake 0.35s cubic-bezier(.36,.07,.19,.97) both;
         }
+        .btn-shine-gold {
+          position: relative;
+          overflow: hidden;
+        }
+        .btn-shine-gold::after {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -60%;
+          width: 30%;
+          height: 200%;
+          background: rgba(255, 255, 255, 0.3);
+          transform: rotate(30deg);
+          transition: transform 0.5s;
+          opacity: 0;
+        }
+        .btn-shine-gold:hover::after {
+          transform: translate(300%, 300%) rotate(30deg);
+          opacity: 1;
+          transition: all 0.8s ease;
+        }
       `}</style>
 
-      {/* 2. CORE LIGHT LOGIN CARD CONTAINER */}
+      {/* 2. GLASSMORPHISM LOGIN CARD */}
       <div 
-        className={`w-full max-w-md bg-white/80 backdrop-blur-xl border border-slate-200/80 shadow-2xl rounded-3xl p-8 relative z-10 transition-all duration-300 ${
-          isShaking ? 'animate-shake border-red-500/50 shadow-red-500/20' : ''
+        className={`w-full max-w-md bg-navy-900/70 backdrop-blur-2xl border border-navy-800 shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-3xl p-8 relative z-10 transition-all duration-300 ${
+          isShaking ? 'animate-shake border-red-500/50 shadow-red-500/10' : 'hover:border-brand-500/30'
         }`}
       >
         {/* Brand Logo Header */}
         <div className="flex flex-col items-center mb-8">
           <div 
             onClick={handleGoHome}
-            className="cursor-pointer bg-gradient-to-tr from-violet-400 via-indigo-400 to-orange-300 p-3.5 rounded-2xl flex items-center justify-center shadow-md shadow-violet-500/10 mb-4 group hover:scale-105 active:scale-95 transition-transform"
+            className="cursor-pointer bg-navy-950 p-2.5 rounded-2xl flex items-center justify-center shadow-lg border border-navy-800 mb-4 hover:scale-105 active:scale-95 transition-transform"
           >
-            <Compass className="w-8 h-8 text-white group-hover:rotate-45 transition-transform duration-500" />
+            <img src={abbataLogo} alt="ABBATA WISATA" className="w-16 h-16 object-contain" />
           </div>
-          <h2 className="text-2xl font-black tracking-tight text-slate-800">
-            Portal <span className="bg-gradient-to-r from-violet-500 to-orange-400 bg-clip-text text-transparent">Admin</span>
+          <h2 className="text-2xl font-black tracking-tight text-white">
+            Portal <span className="bg-gradient-to-r from-brand-400 to-brand-600 bg-clip-text text-transparent">Admin</span>
           </h2>
-          <p className="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">
-            PT. Abditransindo Trans Nusantara
+          <p className="text-[10px] text-brand-500 mt-1.5 uppercase tracking-[0.25em] font-extrabold">
+            PT. ABDI BANGKIT TRANSPORTINDO
           </p>
         </div>
 
         {/* Dynamic Alerts */}
         {errorMsg && (
-          <div className="bg-red-50 border border-red-100 text-red-600 p-4 rounded-2xl flex items-start gap-3 text-xs mb-6 animate-fade-in font-sans leading-relaxed">
+          <div className="bg-red-950/40 border border-red-900/50 text-red-200 p-4 rounded-2xl flex items-start gap-3 text-xs mb-6 animate-fade-in font-sans leading-relaxed">
             <ShieldAlert className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="font-bold block text-red-800">Gagal Masuk</strong>
+              <strong className="font-bold block text-red-400">Gagal Masuk</strong>
               <span>{errorMsg}</span>
             </div>
           </div>
@@ -109,30 +133,30 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
         {/* Credentials Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-500 tracking-wide block uppercase">
+            <label className="text-[10px] font-extrabold text-slate-400 tracking-wider block uppercase">
               Alamat E-mail
             </label>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-brand-500/60">
                 <Mail className="w-4 h-4" />
               </span>
               <input
                 type="email"
                 disabled={isLoading}
-                placeholder="admin@abditransindo.com"
+                placeholder="info.abditransindo@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full text-xs sm:text-sm bg-white border border-slate-200 text-slate-800 placeholder-slate-400 rounded-2xl pl-10 pr-4 py-3 outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/10 transition-all font-sans shadow-sm"
+                className="w-full text-xs sm:text-sm bg-navy-950/80 border border-navy-800 text-white placeholder-slate-650 rounded-2xl pl-10 pr-4 py-3.5 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/20 transition-all font-sans"
               />
             </div>
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-500 tracking-wide block uppercase">
+            <label className="text-[10px] font-extrabold text-slate-400 tracking-wider block uppercase">
               Kata Sandi
             </label>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-brand-500/60">
                 <Lock className="w-4 h-4" />
               </span>
               <input
@@ -141,12 +165,12 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
                 placeholder="Masukkan kata sandi..."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full text-xs sm:text-sm bg-white border border-slate-200 text-slate-800 placeholder-slate-400 rounded-2xl pl-10 pr-12 py-3 outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/10 transition-all font-sans shadow-sm"
+                className="w-full text-xs sm:text-sm bg-navy-950/80 border border-navy-800 text-white placeholder-slate-650 rounded-2xl pl-10 pr-12 py-3.5 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/20 transition-all font-sans"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-800 transition-colors outline-none"
+                className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-white transition-colors outline-none"
               >
                 {showPassword ? <EyeOff className="w-4.5 h-4.5" /> : <Eye className="w-4.5 h-4.5" />}
               </button>
@@ -154,15 +178,15 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
           </div>
 
           {/* Demo Credentials Box */}
-          <div className="bg-slate-50 border border-slate-200/80 p-4 rounded-2xl text-[11px] font-sans text-slate-500 space-y-1 shadow-inner">
-            <div className="font-bold text-violet-600 uppercase tracking-wider text-[9px]">🔑 Akun Demo Kredensial:</div>
-            <div className="flex justify-between border-b border-slate-200/50 pb-1">
+          <div className="bg-navy-900 border border-navy-800/80 p-4 rounded-2xl text-[11px] font-sans text-slate-400 space-y-1.5 shadow-inner">
+            <div className="font-extrabold text-brand-500 uppercase tracking-widest text-[9px]">🔑 Kredensial Akses Demo:</div>
+            <div className="flex justify-between border-b border-navy-800/50 pb-1.5">
               <span>E-mail:</span>
-              <strong className="text-slate-800 font-mono">admin@abditransindo.com</strong>
+              <strong className="text-white font-mono">info.abditransindo@gmail.com</strong>
             </div>
-            <div className="flex justify-between pt-1">
+            <div className="flex justify-between pt-0.5">
               <span>Kata Sandi:</span>
-              <strong className="text-slate-800 font-mono">admin123</strong>
+              <strong className="text-white font-mono">admin123</strong>
             </div>
           </div>
 
@@ -170,7 +194,7 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-gradient-to-r from-violet-500 to-orange-400 hover:from-violet-600 hover:to-orange-500 text-white py-3 rounded-2xl text-xs sm:text-sm font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md shadow-violet-500/10 hover:shadow-violet-500/15 active:scale-[0.98] disabled:opacity-50 disabled:active:scale-100 transition-all cursor-pointer outline-none"
+            className="w-full bg-gradient-to-r from-brand-600 via-brand-500 to-brand-400 hover:from-brand-600 hover:to-brand-500 text-navy-950 py-3.5 rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-brand-500/10 active:scale-[0.98] disabled:opacity-50 disabled:active:scale-100 transition-all cursor-pointer outline-none btn-shine-gold"
           >
             {isLoading ? (
               <>
@@ -184,20 +208,20 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
         </form>
 
         {/* Back Link */}
-        <div className="mt-6 pt-5 border-t border-slate-100 text-center">
+        <div className="mt-6 pt-5 border-t border-navy-800/80 text-center">
           <button
             onClick={handleGoHome}
-            className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-violet-600 transition-colors cursor-pointer outline-none"
+            className="inline-flex items-center gap-1.5 text-xs text-slate-450 hover:text-brand-400 transition-colors cursor-pointer outline-none font-bold"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Kembali ke Beranda Website</span>
+            <span>Kembali ke Beranda</span>
           </button>
         </div>
       </div>
 
       {/* Footer Branding */}
-      <p className="mt-8 text-[10px] text-slate-400 tracking-wider uppercase font-mono">
-        Secure Admin Access System v1.0.0
+      <p className="mt-8 text-[9px] text-slate-650 tracking-widest uppercase font-mono font-bold">
+        ABBATA WISATA • Secure Panel v1.2.0
       </p>
     </div>
   );
